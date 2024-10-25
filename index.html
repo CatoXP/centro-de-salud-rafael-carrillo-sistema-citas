@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centro de Salud Rafael Carrillo - Sistema de Citas</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --burgundy: #672439;
+            --gold: #8B6014;
+            --light-burgundy: #8a3149;
+        }
+        
+        .nav-burgundy {
+            background-color: var(--burgundy);
+
+        }
+        
+        .nav-gold {
+            background-color: var(--gold);
+        }
+
+        .gradient-header {
+            background: linear-gradient(to right, var(--burgundy), var(--light-burgundy));
+        }
+
+        .button-burgundy {
+            background-color: var(--burgundy);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            width: 100%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button-burgundy:hover {
+            background-color: var(--light-burgundy);
+
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.375rem;
+            margin-top: 0.25rem;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: var(--burgundy);
+            ring: 2px solid var(--burgundy);
+        }
+
+        .error {
+            background-color: #fee2e2;
+            border: 1px solid #ef4444;
+            color: #b91c1c;
+            padding: 1rem;
+            border-radius: 0.375rem;
+            margin: 1rem 0;
+        }
+
+        .success {
+            background-color: #fdf2f4;
+            border: 1px solid var(--burgundy);
+            color: var(--burgundy);
+            padding: 1.5rem;
+            border-radius: 0.375rem;
+            margin: 1rem 0;
+        }
+
+        .nav-link {
+            color: white;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-link:hover {
+            opacity: 0.8;
+
+        }
+
+        .logo {
+            height: 40px;
+            margin-right: 1rem;
+        }
+
+        .info-section {
+            background-color: #fdf2f4;
+            color: var(--burgundy);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+
+    
+    <nav class="nav-burgundy text-white">
+        <div class="max-w-7xl mx-auto px-4 py-2 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Logo Salud" class="logo">
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="#" class="nav-link">Trámites</a>
+                <a href="#" class="nav-link">Gobierno</a>
+                <button class="nav-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="nav-gold text-white">
+        <div class="max-w-7xl mx-auto px-4 py-2 flex justify-between items-center">
+            <div class="text-lg font-medium">Ciudad de México</div>
+            <div class="flex items-center space-x-4">
+                <a href="#" class="nav-link">Inicio</a>
+                <a href="#" class="nav-link">Citas</a>
+                <a href="#" class="nav-link">Quejas y sugerencias</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="p-4">
+        <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+            <!-- Encabezado -->
+            <div class="gradient-header text-white p-6 text-center">
+                <h1 class="text-2xl font-bold mb-2">Centro de Salud Rafael Carrillo</h1>
+                <p class="text-pink-100">Sistema de Citas Médicas</p>
+            </div>
+
+            
+
+            <div class="p-6" id="formContainer">
+                <!-- Paso 1: Formulario -->
+                <div id="step1">
+                    <div class="info-section p-4 rounded-lg mb-6">
+                        <h2 class="font-medium mb-2">Información Personal</h2>
+                        <p class="text-sm">Complete sus datos para generar su cita médica</p>
+                    </div>
+
+                    <form id="appointmentForm" class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium mb-1">CURP*</label>
+                            <input type="text" id="curp" class="input-field" maxlength="18" placeholder="Ingresa tu CURP">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Nombre Completo*</label>
+                            <input type="text" id="nombre" class="input-field" placeholder="Ingresa tu nombre completo">
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Edad*</label>
+                                <input type="number" id="edad" class="input-field" placeholder="Edad">
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Género*</label>
+                                <select id="genero" class="input-field">
+                                    <option value="">Seleccionar</option>
+                                    <option value="M">Masculino</option>
+                                    <option value="F">Femenino</option>
+                                    <option value="O">Otro</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Teléfono*</label>
+                            <input type="tel" id="telefono" class="input-field" maxlength="10" placeholder="Ingresa tu número telefónico">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Correo Electrónico</label>
+                            <input type="email" id="correo" class="input-field" placeholder="Ingresa tu correo electrónico">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Motivo de la Consulta*</label>
+                            <textarea id="motivo" class="input-field" rows="3" placeholder="Describe brevemente el motivo de tu consulta"></textarea>
+                        </div>
+
+                        <div id="errorContainer" class="error" style="display: none;"></div>
+
+                        <button type="submit" class="button-burgundy">
+                            Generar Cita
+                        </button>
+                    </form>
+                </div>
+
+                
+                <div id="step2" style="display: none;">
+                    <div id="appointmentDetails" class="success"></div>
+
+                    <div class="info-section p-4 rounded-lg mt-6">
+                        <h4 class="font-medium mb-2">Recomendaciones</h4>
+                        <ul class="text-sm space-y-2">
+                            <li>• Llegue 15 minutos antes de su cita</li>
+                            <li>• Traiga una identificación oficial</li>
+                            <li>• Si no puede asistir, cancele con 24 horas de anticipación</li>
+                            <li>• Use cubrebocas durante su visita</li>
+                        </ul>
+                    </div>
+
+                    <button onclick="resetForm()" class="button-burgundy mt-6">
+                        Nueva Cita
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+           
+            const curp = document.getElementById('curp').value.toUpperCase();
+            const nombre = document.getElementById('nombre').value;
+            const edad = document.getElementById('edad').value;
+            const genero = document.getElementById('genero').value;
+            const telefono = document.getElementById('telefono').value;
+            const correo = document.getElementById('correo').value;
+            const motivo = document.getElementById('motivo').value;
+
+            
+            const errorContainer = document.getElementById('errorContainer');
+            errorContainer.style.display = 'none';
+            errorContainer.innerHTML = '';
+
+            let errors = [];
+
+            if (!curp) errors.push('El CURP es requerido.');
+            if (!nombre) errors.push('El nombre es requerido.');
+            if (!edad || edad <= 0) errors.push('La edad es inválida.');
+            if (!genero) errors.push('El género es requerido.');
+            if (!telefono || telefono.length < 10) errors.push('El teléfono es inválido.');
+            if (!motivo) errors.push('El motivo de la consulta es requerido.');
+
+            if (errors.length > 0) {
+                errorContainer.innerHTML = errors.join('<br>');
+                errorContainer.style.display = 'block';
+                return;
+            }
+
+            
+            document.getElementById('step1').style.display = 'none';
+            document.getElementById('step2').style.display = 'block';
+
+            
+            const appointmentDetails = document.getElementById('appointmentDetails');
+            appointmentDetails.innerHTML = `
+                <h3 class="font-medium">Cita Generada</h3>
+                <p>Nombre: ${nombre}</p>
+                <p>Edad: ${edad}</p>
+                <p>Género: ${genero === 'M' ? 'Masculino' : genero === 'F' ? 'Femenino' : 'Otro'}</p>
+                <p>Teléfono: ${telefono}</p>
+                <p>Correo: ${correo}</p>
+                <p>Motivo: ${motivo}</p>
+                <p>Fecha y Hora: <strong>${new Date().toLocaleString()}</strong></p>
+            `;
+        });
+
+        function resetForm() {
+            document.getElementById('appointmentForm').reset();
+            document.getElementById('step1').style.display = 'block';
+            document.getElementById('step2').style.display = 'none';
+            document.getElementById('errorContainer').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
