@@ -22,4 +22,4 @@ Este repositorio contiene el código para el **Sistema de Citas Médicas** del *
 Este proyecto es de código abierto. Si deseas contribuir, por favor abre un *pull request*.
 
 ## Licencia:
-Este proyecto no tiene licencia especificada, por lo que puedes usarlo bajo tu propio criterio.
+Derechos reservados al programador Brandon Uriel Garcia Sanchez
